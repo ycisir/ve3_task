@@ -6,6 +6,8 @@ This Django web application allows users to upload CSV files, analyze the data u
 + Generates visualizations like histograms for numerical columns using matplotlib.
 + Displays the analysis results and visualizations on a user-friendly web page.
 
+
+
 > Setup Instructions:
 
 1. Clone the repository `git clone https://github.com/ycisir/ve3_task.git`
