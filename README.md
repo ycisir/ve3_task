@@ -7,4 +7,5 @@ This Django web application allows users to upload CSV files, analyze the data u
 + Displays the analysis results and visualizations on a user-friendly web page.
 
 > Setup Instructions:
-Clone the repository `git clone https://github.com/ycisir/ve3_task.git`
+
+1. Clone the repository `git clone https://github.com/ycisir/ve3_task.git`
