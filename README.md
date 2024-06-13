@@ -15,5 +15,3 @@ This Django web application allows users to upload CSV files, analyze the data u
 5. Install dependencies `cd ve3_task` then `pip install -r requirements.txt`
 6. Run the Django development server `python manage.py runserver`
 
-> [!NOTE]
-> Make sure run the `python manage.py makemigrations` and `python manage.py migrate` command before run the server.
