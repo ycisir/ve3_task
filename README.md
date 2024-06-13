@@ -8,7 +8,6 @@ This Django web application allows users to upload CSV files, analyze the data u
 
 
 
-> Setup Instructions:
-
+### Setup instructions
 1. Clone the repository `git clone https://github.com/ycisir/ve3_task.git`
 2. Install dependencies `cd ve3_task` then `pip install -r requirements.txt`
