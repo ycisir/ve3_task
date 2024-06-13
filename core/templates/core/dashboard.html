@@ -1,0 +1,68 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %} {{ block.super }} Dashboard {% endblock title %}
+{% block content %}
+
+    <div class="row">
+        <div class="my-3 text-center">
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="msg">{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="col-sm-6">
+            <table class="table table-hover border">
+                <thead>
+                    <tr>
+                        {% for col in columns %}
+                        <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for values in rows %}
+                    <tr>
+                        {% for key, value in values.items %}
+                        <td>{{value}}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            
+        </div>        
+
+        <div class="col-sm-6 text-center">
+            {% comment %} <h5 class="text-center mt-3">Summary of the Data</h5> {% endcomment %}
+            <table class="table table-hover border">
+                <thead>
+                    <tr>
+                        <th>Mean</th>
+                        <th>Median</th>
+                        {% comment %} <th>Sum</th> {% endcomment %}
+                        <th>Standard Deviation</th>
+                        <th>Missing Values</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        {% for key, value in statistics.items %}
+                        <td>{{value}}</td>
+                        {% endfor %}
+                    </tr>
+                    
+                </tbody>
+            </table>
+            {% comment %} <h5>Visualizations of the Data</h5> {% endcomment %}
+            <img src="{% static 'core/images/hist.png' %}" alt="histogram" class="hist">
+        </div>
+    
+    </div>
+    
+    
+    
+{% endblock content %}

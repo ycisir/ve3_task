@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+{% block title %} {{ block.super }} Upload File {% endblock title %}
+{% block content %}
+
+    <div class="text-center offset-3 col-sm-6">
+        <p class="my-1">Upload your CSV file here</p>
+        <form class="border rounded p-3" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="csv_file">File:</label>
+            <input type="file" id="csv_file" name="csv_file" accept=".csv">
+            <button type="submit" class="btn btn-secondary btn-sm">Upload</button>
+        </form>    
+    </div>
+{% endblock content %}
