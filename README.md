@@ -5,3 +5,5 @@ This Django web application allows users to upload CSV files, analyze the data u
 + Performs basic data analysis like calculating descriptive statistics.
 + Generates visualizations like histograms for numerical columns using matplotlib.
 + Displays the analysis results and visualizations on a user-friendly web page.
+
+> Setup Instructions:
