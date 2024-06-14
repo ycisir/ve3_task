@@ -3,10 +3,10 @@ from .forms import UploadCSVForm
 from .models import UploadedCSV
 from django.contrib import messages
 import pandas as pd
-import csv, codecs
 import numpy as np
 import matplotlib.pyplot as plt
-import os
+from io import BytesIO
+import base64
 
 
 def upload_csv(request):
@@ -52,11 +52,18 @@ def upload_csv(request):
                 data.hist(column='Salary',edgecolor='black')
                 plt.title('Histogram of Salary Data')
                 plt.xlabel('Salary')
-                plt.ylabel('Experience')
-                save_results_to = '/home/yasir/Documents/projects/django/ve3_task/core/static/core/images/'
-                plt.savefig(save_results_to + 'hist.png', dpi = 300)
+                # plt.ylabel('Experience')
+                # save_results_to = '/home/yasir/Documents/projects/django/ve3_task/core/static/core/images/'
+                # plt.savefig(save_results_to + 'hist.png', dpi = 300)
+                buffer = BytesIO()
+                plt.savefig(buffer, format='png')
+                plt.close()
+                image_png = buffer.getvalue()
 
-            return render(request, 'core/dashboard.html', {'columns': data.columns, 'rows': top.to_dict('records'), 'statistics':statistics})
+                # Encode image as Base64 string
+                image_b64 = base64.b64encode(image_png).decode('utf-8')
+
+            return render(request, 'core/dashboard.html', {'columns': data.columns, 'rows': top.to_dict('records'), 'statistics':statistics, 'plot_image': image_b64})
     else:
         form = UploadCSVForm()
     return render(request, 'core/index.html', {'form': form})
